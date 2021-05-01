@@ -1,6 +1,5 @@
 
-// change the value of the Year output
-// and use charForAllYear, chartforSpecificYear function to choose desire year
+
 document.getElementById("Year").addEventListener("change", onChangeYear);
 
 function onChangeYear() {
@@ -16,20 +15,15 @@ function onChangeYear() {
 
 charForAllYear();
 
-// least population cities
-
 function chartForSpecificYear(year) {
 
-    // read the json file
     d3.json("../Data/cacsvdata.json", function (error, topology) {
 
-        // disregret the commas in population data
         var data = topology;
         data.forEach(function (item) {
             item.Population = item.Population.replace(/,/g, '');
         });
 
-        // return a shallow copy of a portion of the array, and not modify the original array
         var sortedjson = data.slice().sort((a, b) => a.Population - b.Population);
 
         var least10uniqueCity = sortedjson.filter((arr, index, self) => index === self.findIndex((t) => (t.City === arr.City)));
@@ -61,8 +55,6 @@ function chartForSpecificYear(year) {
         drawLeast10BarChart(least10dataArray);
 
         ///--------------------------------------------------------------------------------
-
-        // Top population cities
 
         var top10Data = data.slice().sort((a, b) => b.Population - a.Population);
         var top10uniqueCity = top10Data.filter((arr, index, self) => index === self.findIndex((t) => (t.City === arr.City)));
