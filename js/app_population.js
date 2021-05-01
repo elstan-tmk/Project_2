@@ -155,6 +155,7 @@ function charForAllYear() {
 
         ///--------------------------------------------------------------------------------
 
+        
         var top10Data = data.slice().sort((a, b) => b.Population - a.Population);
         var uniqueYearForTop10 = data.filter((arr, index, self) => index === self.findIndex((t) => (t.Year === arr.Year)));
         var top10uniqueCity = top10Data.filter((arr, index, self) => index === self.findIndex((t) => (t.City === arr.City)));
@@ -194,7 +195,7 @@ function charForAllYear() {
     });
 }
 
-
+// Use Google Chart to present the plots
 
 function drawLeast10BarChart(jsonData) {
     google.charts.load('current', { packages: ['corechart', 'bar'] });
